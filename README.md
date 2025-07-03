@@ -28,5 +28,3 @@
 * SQL / Power Query (資料整理)
 * Power BI (互動視覺化報表)
 * Excel (初步資料彙整)
-
-The background color is `#ffffff` for light mode and `#000000` for dark mode.
