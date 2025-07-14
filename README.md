@@ -1,5 +1,4 @@
-# 你花錢的樣子像誰?智慧消費人格分析
-## Power BI Portfolio Projects
+# 你花錢的樣子像誰?智慧消費人格分析-## Power BI Portfolio Projects
 ![Power Bi](https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 ![Excel](https://img.shields.io/badge/Excel-006000?style=for-the-badge&logo=Excel&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-005AB5?style=for-the-badge&logo=Python&logoColor=white)
