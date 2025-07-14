@@ -6,7 +6,7 @@
 ![PPT](https://img.shields.io/badge/Microsoft_PowerPoint-F75000?style=for-the-badge&logo=microsoft-powerpoint&logoColor=white)
 ![GOOGLE SHEETS](https://img.shields.io/badge/Google%20Sheets-01B468?style=for-the-badge&logo=google-sheets&logoColor=white)
 ![VSCODE](https://img.shields.io/badge/VSCode-0072E3?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
-![Illustrator](https://img.shields.io/badge/Illustrator-842B00?style=for-the-badge&logo=Illustrator&logoColor=EA7500)
+![Illustrator](https://img.shields.io/badge/Illustrator-842B00?style=for-the-badge&logo=Illustrator&logoColor=white)
 
 ### 專題說明：  
 透過蒐集個人的**電子發票消費資料**,結合**資料分析技術**與**心理學人格模型**,深入了解個人的消費行為與潛在的人格特質,並提供智慧化的消費建議與預警,幫助使用者提升理財意識與消費自覺。  
