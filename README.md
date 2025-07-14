@@ -1,12 +1,12 @@
 ## 你花錢的樣子像誰?智慧消費人格分析
 # Power BI Portfolio Projects
 ![Power Bi](https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
-![Excel](https://img.shields.io/badge/Excel-316192?style=for-the-badge&logo=Excel&logoColor=white)
-![Python](https://img.shields.io/badge/Python-00000F?style=for-the-badge&logo=Python&logoColor=white)
-![PPT](https://img.shields.io/badge/Microsoft_PowerPoint-B7472A?style=for-the-badge&logo=microsoft-powerpoint&logoColor=white)
-![GOOGLE SHEETS](https://img.shields.io/badge/Google%20Sheets-34A853?style=for-the-badge&logo=google-sheets&logoColor=white)
-![VSCODE](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
-![Illustrator](https://img.shields.io/badge/Illustrator-F24E1E?style=for-the-badge&logo=Illustrator&logoColor=white)
+![Excel](https://img.shields.io/badge/Excel-006000?style=for-the-badge&logo=Excel&logoColor=white)
+![Python](https://img.shields.io/badge/Python-005AB5?style=for-the-badge&logo=Python&logoColor=white)
+![PPT](https://img.shields.io/badge/Microsoft_PowerPoint-F75000?style=for-the-badge&logo=microsoft-powerpoint&logoColor=white)
+![GOOGLE SHEETS](https://img.shields.io/badge/Google%20Sheets-01B468?style=for-the-badge&logo=google-sheets&logoColor=white)
+![VSCODE](https://img.shields.io/badge/VSCode-0072E3?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+![Illustrator](https://img.shields.io/badge/Illustrator-842B00?style=for-the-badge&logo=Illustrator&logoColor=EA7500)
 
 ### 專題說明：  
 透過蒐集個人的**電子發票消費資料**,結合**資料分析技術**與**心理學人格模型**,深入了解個人的消費行為與潛在的人格特質,並提供智慧化的消費建議與預警,幫助使用者提升理財意識與消費自覺。  
