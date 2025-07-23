@@ -1,38 +1,68 @@
-# 你花錢的樣子像誰?智慧消費人格分析-Power BI Portfolio Projects
+# 💸 你花錢的樣子，像誰？｜消費行為視覺化分析專案
 ![Power Bi](https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 ![Excel](https://img.shields.io/badge/Excel-006000?style=for-the-badge&logo=Excel&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-005AB5?style=for-the-badge&logo=Python&logoColor=white)
 ![PPT](https://img.shields.io/badge/Microsoft_PowerPoint-F75000?style=for-the-badge&logo=microsoft-powerpoint&logoColor=white)
 ![GOOGLE SHEETS](https://img.shields.io/badge/Google%20Sheets-01B468?style=for-the-badge&logo=google-sheets&logoColor=white)
-![VSCODE](https://img.shields.io/badge/VSCode-0072E3?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
-![Illustrator](https://img.shields.io/badge/Illustrator-842B00?style=for-the-badge&logo=Illustrator&logoColor=white)
+![VSCode](https://img.shields.io/badge/VSCode-0072E3?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Illustrator](https://img.shields.io/badge/Illustrator-842B00?style=for-the-badge&logo=adobe-illustrator&logoColor=white)
 
-### 專題說明：  
-透過蒐集個人的**電子發票消費資料**,結合**資料分析技術**與**心理學人格模型**,深入了解個人的消費行為與潛在的人格特質,並提供智慧化的消費建議與預警,幫助使用者提升理財意識與消費自覺。  
-### 主要功能與分析面向：  
-1. 消費行為分析  
-    * 自動分類消費項目(如食、衣、住、行、育、樂、其他)  
-    * 分析消費金額、次數、頻率、時間、商家偏好  
-2. 消費人格推測  
-    * 比對全台平均消費模式,推測出你的消費風格,找到「像誰」  
-3. 預算與超支預警  
-    * 設定各類消費預算  
-    * 偵測異常消費、提醒節制  
-4. 視覺化呈現(Power BI)  
-    * 個人專屬互動儀表板  
-    * 消費趨勢圖、分類站比圖、個人vs群體比較圖  
-### 資料來源：  
-* 個人電子發票資料(財政部)  
-* 政府公開資料(家庭收支調查、物價指數)  
-* 信用卡消費明細  
-* 必要時可整合第三方平台數據  
-### 預期效益：  
-* 幫助使用者認識自己的消費習慣  
-* 推估可能的人格特質與消費風格  
-* 強化理財與消費意識,減少不必要的支出  
-* 提供實用、有趣、具互動性的數據分析體驗  
-### 使用工具：  
-* Python (資料處理、自動分類)  
-* SQL / Power Query (資料整理)
-* Power BI (互動視覺化報表)
-* Excel (初步資料彙整)
+---
+
+## 📌 專案簡介
+
+本專案以個人的電子發票與信用卡消費資料為基礎，結合政府公開資料，透過 Power BI 打造一個互動式消費分析平台，幫助使用者更了解自己的消費習慣與行為特徵。
+
+> **關鍵問題：** 你花錢的樣子，像誰？  
+> 透過數據，我們試圖找出個人的消費風格，與全台不同族群進行比較，讓消費行為不只是記帳，更是「認識自己」的開始。
+
+---
+
+## 🔍 主要分析內容與功能
+
+### 1️ 消費行為分析
+- 自動分類消費項目（食、衣、住、行、育樂、其他）
+- 分析消費金額、次數、時間分布與商家偏好
+
+### 2️ 個人 vs 群體比較
+- 匯入政府《家庭收支調查》資料
+- 對比個人與不同族群的消費結構（如學生、上班族、全台平均）
+
+### 3️ 年度與月份趨勢追蹤
+- 呈現每年每月消費變化、分類佔比變化
+- 加入「四季」與「月份」的時間視角
+
+### 4️ 視覺化儀表板（Power BI）
+- 長條圖、佔比圖、趨勢圖、象限分析圖（消費人格分布）
+- 支援 Tooltip 滑鼠提示功能（顯示該分類最大金額店家）
+
+---
+
+## 🧩 資料來源
+
+| 類型 | 資料內容 |
+|------|----------|
+| 📄 個人資料 | 電子發票載具消費紀錄、信用卡消費明細 |
+| 📊 公開資料 | 政府《家庭收支調查》、CPI 指數、人口統計 |
+| 📌 資料處理 | 結合備註文字、自動商家分類、月份與地區標記 |
+
+---
+
+## 🎯 預期效益
+
+- 幫助使用者認識自己的消費習慣與高花費分類
+- 提供「我 vs 全台平均 / 族群」的消費結構比較
+- 強化理財意識，促進自覺性支出決策
+
+---
+
+## 🛠️ 使用工具
+
+| 工具 | 用途 |
+|------|------|
+| Python | 自動商家分類、資料前處理 |
+| SQL / Power Query | 清洗合併資料、建立資料模型 |
+| Power BI | 製作互動式儀表板、報表視覺化 |
+| Excel / Google Sheets | 初步整理、驗證原始資料 |
+| PowerPoint / Illustrator | 成果展示與簡報製作 |
+
