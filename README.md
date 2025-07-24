@@ -1,4 +1,4 @@
-## 你花錢的樣子，像誰？｜消費行為視覺化分析專案  
+## 💸你花錢的樣子，像誰？｜消費行為視覺化分析專案  
 個人 × 群體 × 消費風格 × Power BI 視覺化
 
 ## 專案簡介
@@ -44,3 +44,13 @@
 | Power BI | 製作互動式儀表板、報表視覺化 |
 | Excel / Google Sheets | 初步整理、驗證原始資料 |
 | PowerPoint / Illustrator | 成果展示與簡報製作 |
+
+
+![Power Bi](https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![Excel](https://img.shields.io/badge/Excel-006000?style=for-the-badge&logo=Excel&logoColor=white)
+![Python](https://img.shields.io/badge/Python-005AB5?style=for-the-badge&logo=Python&logoColor=white)
+![PPT](https://img.shields.io/badge/Microsoft_PowerPoint-F75000?style=for-the-badge&logo=microsoft-powerpoint&logoColor=white)
+![GOOGLE SHEETS](https://img.shields.io/badge/Google%20Sheets-01B468?style=for-the-badge&logo=google-sheets&logoColor=white)
+![VSCode](https://img.shields.io/badge/VSCode-0072E3?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Illustrator](https://img.shields.io/badge/Illustrator-842B00?style=for-the-badge&logo=adobe-illustrator&logoColor=white)
+
