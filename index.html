@@ -1,164 +1,198 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>你花錢的樣子像誰？｜消費視覺化分析專案</title>
-    <style>
-        body {
-            font-family: "Segoe UI", "Noto Sans TC", sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9fb;
-            color: #2c3e50;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>你花錢的樣子像誰？｜消費視覺化分析專案</title>
+  <style>
+    body {
+      font-family: "Segoe UI", "Noto Sans TC", sans-serif;
+      background-color: #f9f9fb;
+      color: #2c3e50;
+      margin: 0;
+      padding: 0;
+    }
 
-        header {
-            background: linear-gradient(to right, #00c3ff, #0072ff);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
+    header {
+      background: linear-gradient(to right, #00c3ff, #0072ff);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.8s ease, opacity 0.8s ease;
+    }
 
-        header h2 {
-            margin: 0;
-            font-size: 28px;
-        }
+    header h2 {
+      margin: 0;
+      font-size: 28px;
+    }
 
-        main {
-            max-width: 960px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+    main {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
 
-        section {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
+    section {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease-out;
+    }
 
-        h3 {
-            margin-top: 0;
-            color: #34495e;
-            border-left: 5px solid #00b8d4;
-            padding-left: 10px;
-        }
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        ul, ol {
-            margin: 10px 0 20px 20px;
-        }
+    h3 {
+      margin-top: 0;
+      border-left: 5px solid #00b8d4;
+      padding-left: 10px;
+      color: #34495e;
+    }
 
-        li {
-            margin-bottom: 6px;
-        }
+    ul, ol {
+      margin-left: 20px;
+    }
 
-        iframe {
-            border: none;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 100%;
-            height: 637px;
-            margin-top: 10px;
-        }
+    li {
+      margin-bottom: 6px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #aaa;
-            font-size: 14px;
-        }
-    </style>
+    li:hover {
+      transform: scale(1.02);
+      color: #0072ff;
+    }
+
+    iframe {
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 100%;
+      height: 637px;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    iframe.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h2>你花錢的樣子像誰？｜消費視覺化分析專案</h2>
-    </header>
+  <header>
+    <h2>你花錢的樣子像誰？｜消費視覺化分析專案</h2>
+  </header>
 
-    <main>
-        <section>
-            <h3>專案簡介</h3>
-            <p>
-                本專案結合個人電子發票與信用卡消費資料，並搭配政府家庭收支調查等公開數據，
-                透過 Power BI 建立互動式視覺化儀表板，分析個人與群體的消費結構差異，探索消費行為背後的風格特徵。
-            </p>
-        </section>
+  <main>
+    <section>
+      <h3>專案簡介</h3>
+      <p>
+        本專案結合個人電子發票與信用卡消費資料，並搭配政府家庭收支調查等公開數據，
+        透過 Power BI 建立互動式視覺化儀表板，分析個人與群體的消費結構差異，探索消費行為背後的風格特徵。
+      </p>
+    </section>
 
-        <section>
-            <h3>分析面向</h3>
-            <ol>
-                <li>
-                    <strong>消費行為分析</strong>
-                    <ul>
-                        <li>自動分類消費項目（如食、衣、住、行、育樂、其他）</li>
-                        <li>分析消費金額、次數、時間分布、商家偏好</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>個人 vs 群體比較</strong>
-                    <ul>
-                        <li>引入全台平均、學生、上班族等族群作對照</li>
-                        <li>計算消費佔比差異，建立比較雷達圖與象限圖</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>年度與月份趨勢追蹤</strong>
-                    <ul>
-                        <li>比較不同年份、月份的總花費與消費組成變化</li>
-                        <li>加入四季、月份等時間維度，觀察消費高峰期</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>視覺化儀表板</strong>
-                    <ul>
-                        <li>使用 Power BI 製作互動圖表</li>
-                        <li>包含趨勢圖、佔比圖、象限圖與 Tooltip 功能</li>
-                    </ul>
-                </li>
-            </ol>
-        </section>
+    <section>
+      <h3>分析面向</h3>
+      <ol>
+        <li><strong>消費行為分析</strong>
+          <ul>
+            <li>自動分類消費項目（如食、衣、住、行、育樂、其他）</li>
+            <li>分析消費金額、次數、時間分布、商家偏好</li>
+          </ul>
+        </li>
+        <li><strong>個人 vs 群體比較</strong>
+          <ul>
+            <li>引入全台平均、學生、上班族等族群作對照</li>
+            <li>計算消費佔比差異，建立比較雷達圖與象限圖</li>
+          </ul>
+        </li>
+        <li><strong>年度與月份趨勢追蹤</strong>
+          <ul>
+            <li>比較不同年份、月份的總花費與消費組成變化</li>
+            <li>加入四季、月份等時間維度，觀察消費高峰期</li>
+          </ul>
+        </li>
+        <li><strong>視覺化儀表板</strong>
+          <ul>
+            <li>使用 Power BI 製作互動圖表</li>
+            <li>包含趨勢圖、佔比圖、象限圖與 Tooltip 功能</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
 
-        <section>
-            <h3>資料來源</h3>
-            <ul>
-                <li>個人電子發票資料（財政部）</li>
-                <li>信用卡消費明細</li>
-                <li>政府公開資料（家庭收支調查、物價指數等）</li>
-            </ul>
-        </section>
+    <section>
+      <h3>資料來源</h3>
+      <ul>
+        <li>個人電子發票資料（財政部）</li>
+        <li>信用卡消費明細</li>
+        <li>政府公開資料（家庭收支調查、物價指數等）</li>
+      </ul>
+    </section>
 
-        <section>
-            <h3>預期效益</h3>
-            <ul>
-                <li>認識自身的消費習慣與偏好分類</li>
-                <li>與群體比較，發現潛在的消費風格特徵</li>
-                <li>提升財務自覺與資料閱讀能力</li>
-            </ul>
-        </section>
+    <section>
+      <h3>預期效益</h3>
+      <ul>
+        <li>認識自身的消費習慣與偏好分類</li>
+        <li>與群體比較，發現潛在的消費風格特徵</li>
+        <li>提升財務自覺與資料閱讀能力</li>
+      </ul>
+    </section>
 
-        <section>
-            <h3>使用工具</h3>
-            <ul>
-                <li>Python（資料前處理、自動分類）</li>
-                <li>SQL / Power Query（資料整合與轉換）</li>
-                <li>Power BI（互動式視覺化）</li>
-                <li>Excel / Google Sheets（初步彙整）</li>
-            </ul>
-        </section>
+    <section>
+      <h3>使用工具</h3>
+      <ul>
+        <li>Python（資料前處理、自動分類）</li>
+        <li>SQL / Power Query（資料整合與轉換）</li>
+        <li>Power BI（互動式視覺化）</li>
+        <li>Excel / Google Sheets（初步彙整）</li>
+      </ul>
+    </section>
 
-        <section>
-            <h3>模擬展示</h3>
-            <iframe title="互動式消費分析儀表板（Power BI）"
-                src="https://app.powerbi.com/view?r=eyJrIjoiMjJlYzkzYWQtZjNiYS00Y2M5LTk4MmYtNjljZDdmZjM4MmFjIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9"
-                allowfullscreen="true"></iframe>
-        </section>
-    </main>
+    <section>
+      <h3>模擬展示</h3>
+      <iframe title="互動式消費分析儀表板（Power BI）"
+        src="https://app.powerbi.com/view?r=eyJrIjoiMjJlYzkzYWQtZjNiYS00Y2M5LTk4MmYtNjljZDdmZjM4MmFjIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9"
+        allowfullscreen="true" id="dashboard"></iframe>
+    </section>
+  </main>
 
-    <footer>
-        &copy; 2025 智慧消費視覺化分析專案 ｜ Designed with ❤️
-    </footer>
+  <footer>
+    &copy; 2025 智慧消費視覺化分析專案 ｜ Designed with ❤️
+  </footer>
+
+  <script>
+    // 觀察 section，滑入畫面時加入 show class
+    const sections = document.querySelectorAll('section');
+    const iframe = document.getElementById('dashboard');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+    observer.observe(iframe);
+  </script>
 </body>
 </html>
