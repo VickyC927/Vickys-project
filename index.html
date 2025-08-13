@@ -5,30 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>你花錢的樣子像誰？｜消費視覺化分析專案</title>
   <style>
+    :root{
+      --c1:#D3DF92; /* 漸層起點 */
+      --c2:#F8C59E; /* 漸層終點 & 重點色 */
+      --c3:#FCDEC3; /* 輔助底色 */
+      --text:#2c3e50;
+    }
+
     body {
       font-family: "Segoe UI", "Noto Sans TC", sans-serif;
       background-color: #f9f9fb;
-      color: #2c3e50;
+      color: var(--text);
       margin: 0;
       padding: 0;
     }
+
     header {
-      background: linear-gradient(to right, #00c3ff, #0072ff);
+      /* 新配色漸層 */
+      background: linear-gradient(to right, var(--c1), var(--c2));
       color: white;
       text-align: center;
       padding: 50px 20px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.8s ease, opacity 0.8s ease;
+      /* 追加過渡，搭配視差/亮度 JS 更順 */
+      transition:
+        transform 0.8s ease,
+        opacity 0.8s ease,
+        background 0.3s ease,
+        filter 0.3s ease;
     }
+
     header h2 {
       margin: 0;
       font-size: 28px;
     }
+
     main {
       max-width: 960px;
       margin: 40px auto;
       padding: 0 20px;
     }
+
     section {
       background: white;
       border-radius: 12px;
@@ -39,42 +56,56 @@
       transform: translateY(40px);
       transition: all 0.7s ease-out;
     }
+
     section.show {
       opacity: 1;
       transform: translateY(0);
     }
+
     h3 {
       margin-top: 0;
-      border-left: 5px solid #00b8d4;
+      border-left: 5px solid var(--c2); /* 小標左線改成主題色 */
       padding-left: 10px;
       color: #34495e;
     }
+
     ul, ol {
       margin-left: 20px;
     }
+
     li {
       margin-bottom: 6px;
       transition: transform 0.3s ease, color 0.3s ease;
     }
+
     li:hover {
       transform: scale(1.02);
-      color: #0072ff;
+      color: var(--c2); /* hover 呼應主題色 */
     }
-    /* RWD Power BI 內嵌樣式 */
+
+    /* RWD Power BI 內嵌樣式（與主色系一致） */
     .embed-wrap {
       position: relative;
       width: 100%;
-      aspect-ratio: 1918 / 1005; /* 根據你的 Power BI 寬高比 */
+      aspect-ratio: 1918 / 1005; /* 依你的 Power BI 寬高比 */
       border-radius: 10px;
       overflow: hidden;
+      background-color: var(--c3); /* 柔和襯底，與主題色系一致 */
       opacity: 0;
       transform: scale(0.95);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
     }
+
     .embed-wrap.show {
       opacity: 1;
       transform: scale(1);
     }
+
+    .embed-wrap:hover{
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
     .embed-wrap iframe {
       position: absolute;
       inset: 0;
@@ -82,10 +113,11 @@
       height: 100%;
       border: none;
     }
+
     footer {
       text-align: center;
       padding: 30px;
-      color: #aaa;
+      color: #888;
       font-size: 14px;
     }
   </style>
@@ -182,7 +214,6 @@
           title="個人消費分析_江梓瑀" 
           src="https://app.powerbi.com/view?r=eyJrIjoiNDE0YjUyNmQtOWFhYS00M2FmLWE3ODYtMzE0OTg3ZGQyYjVmIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9" 
           allowFullScreen="true">
-          
         </iframe>
       </div>
     </section>
@@ -193,16 +224,24 @@
   </footer>
 
   <script>
-    // 進場動畫
-    const sections = document.querySelectorAll('section, .embed-wrap');
+    // Header 漸層視差與亮度變化
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const offset = scrollY * 0.2; // 視差速度
+      const brightness = Math.max(0.85, 1 - scrollY / 800); // 最低亮度 85%
+      header.style.background = `linear-gradient(to right, var(--c1) ${offset}px, var(--c2))`;
+      header.style.filter = `brightness(${brightness})`;
+    });
+
+    // 進場動畫（區塊/內嵌）
+    const targets = document.querySelectorAll('section, .embed-wrap');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('show');
       });
     }, { threshold: 0.2 });
-    sections.forEach(el => observer.observe(el));
+    targets.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
