@@ -12,7 +12,6 @@
       margin: 0;
       padding: 0;
     }
-
     header {
       background: linear-gradient(to right, #00c3ff, #0072ff);
       color: white;
@@ -21,11 +20,7 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       transition: transform 0.8s ease, opacity 0.8s ease;
     }
-
-    header h2 {
-      margin: 0;
-      font-size: 28px;
-    }
+    header h2 { margin: 0; font-size: 28px; }
 
     main {
       max-width: 960px;
@@ -43,11 +38,7 @@
       transform: translateY(40px);
       transition: all 0.7s ease-out;
     }
-
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    section.show { opacity: 1; transform: translateY(0); }
 
     h3 {
       margin-top: 0;
@@ -55,22 +46,12 @@
       padding-left: 10px;
       color: #34495e;
     }
+    ul, ol { margin-left: 20px; }
+    li { margin-bottom: 6px; transition: transform 0.3s ease, color 0.3s ease; }
+    li:hover { transform: scale(1.02); color: #0072ff; }
 
-    ul, ol {
-      margin-left: 20px;
-    }
-
-    li {
-      margin-bottom: 6px;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    li:hover {
-      transform: scale(1.02);
-      color: #0072ff;
-    }
-
-    iframe {
+    /* 讓 Power BI 內嵌更好看、可重用 */
+    .bi-embed {
       border: none;
       border-radius: 10px;
       width: 100%;
@@ -80,11 +61,7 @@
       transform: scale(0.95);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-
-    iframe.show {
-      opacity: 1;
-      transform: scale(1);
-    }
+    .bi-embed.show { opacity: 1; transform: scale(1); }
 
     footer {
       text-align: center;
@@ -106,6 +83,18 @@
         本專案結合個人電子發票與信用卡消費資料，並搭配政府家庭收支調查等公開數據，
         透過 Power BI 建立互動式視覺化儀表板，分析個人與群體的消費結構差異，探索消費行為背後的風格特徵。
       </p>
+    </section>
+
+    <!-- 穿插的 Power BI 內嵌（#1） -->
+    <section>
+      <h3>互動預覽（一）</h3>
+      <iframe
+        title="個人消費分析_江梓瑀"
+        class="bi-embed"
+        src="https://app.powerbi.com/view?r=eyJrIjoiNDE0YjUyNmQtOWFhYS00M2FmLWE3ODYtMzE0OTg3ZGQyYjVmIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9"
+        loading="lazy"
+        allowfullscreen="true">
+      </iframe>
     </section>
 
     <section>
@@ -168,9 +157,15 @@
 
     <section>
       <h3>模擬展示</h3>
-      <iframe title="互動式消費分析儀表板（Power BI）"
-        src="https://app.powerbi.com/view?r=eyJrIjoiMjJlYzkzYWQtZjNiYS00Y2M5LTk4MmYtNjljZDdmZjM4MmFjIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9"
-        allowfullscreen="true" id="dashboard"></iframe>
+      <!-- 原本的 iframe 改為你提供的同一份報表來源（#2） -->
+      <iframe
+        title="個人消費分析_江梓瑀"
+        class="bi-embed"
+        src="https://app.powerbi.com/view?r=eyJrIjoiNDE0YjUyNmQtOWFhYS00M2FmLWE3ODYtMzE0OTg3ZGQyYjVmIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9"
+        loading="lazy"
+        allowfullscreen="true"
+        id="dashboard">
+      </iframe>
     </section>
   </main>
 
@@ -179,20 +174,15 @@
   </footer>
 
   <script>
-    // 觀察 section，滑入畫面時加入 show class
-    const sections = document.querySelectorAll('section');
-    const iframe = document.getElementById('dashboard');
-
+    // 觀察 section/iframe，滑入畫面時加入 show class（進場動畫）
+    const revealTargets = document.querySelectorAll('section, .bi-embed');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('show');
       });
     }, { threshold: 0.2 });
 
-    sections.forEach(section => observer.observe(section));
-    observer.observe(iframe);
+    revealTargets.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
