@@ -20,14 +20,15 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       transition: transform 0.8s ease, opacity 0.8s ease;
     }
-    header h2 { margin: 0; font-size: 28px; }
-
+    header h2 {
+      margin: 0;
+      font-size: 28px;
+    }
     main {
       max-width: 960px;
       margin: 40px auto;
       padding: 0 20px;
     }
-
     section {
       background: white;
       border-radius: 12px;
@@ -38,31 +39,49 @@
       transform: translateY(40px);
       transition: all 0.7s ease-out;
     }
-    section.show { opacity: 1; transform: translateY(0); }
-
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
     h3 {
       margin-top: 0;
       border-left: 5px solid #00b8d4;
       padding-left: 10px;
       color: #34495e;
     }
-    ul, ol { margin-left: 20px; }
-    li { margin-bottom: 6px; transition: transform 0.3s ease, color 0.3s ease; }
-    li:hover { transform: scale(1.02); color: #0072ff; }
-
-    /* 讓 Power BI 內嵌更好看、可重用 */
-    .bi-embed {
-      border: none;
-      border-radius: 10px;
+    ul, ol {
+      margin-left: 20px;
+    }
+    li {
+      margin-bottom: 6px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    li:hover {
+      transform: scale(1.02);
+      color: #0072ff;
+    }
+    /* RWD Power BI 內嵌樣式 */
+    .embed-wrap {
+      position: relative;
       width: 100%;
-      max-width: 100%;
-      height: 637px;
+      aspect-ratio: 1918 / 1005; /* 根據你的 Power BI 寬高比 */
+      border-radius: 10px;
+      overflow: hidden;
       opacity: 0;
       transform: scale(0.95);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    .bi-embed.show { opacity: 1; transform: scale(1); }
-
+    .embed-wrap.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .embed-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
     footer {
       text-align: center;
       padding: 30px;
@@ -85,16 +104,16 @@
       </p>
     </section>
 
-    <!-- 穿插的 Power BI 內嵌（#1） -->
+    <!-- 第一個 Power BI 互動預覽 -->
     <section>
-      <h3>互動預覽（一）</h3>
-      <iframe
-        title="個人消費分析_江梓瑀"
-        class="bi-embed"
-        src="https://app.powerbi.com/view?r=eyJrIjoiNDE0YjUyNmQtOWFhYS00M2FmLWE3ODYtMzE0OTg3ZGQyYjVmIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9"
-        loading="lazy"
-        allowfullscreen="true">
-      </iframe>
+      <h3>互動預覽</h3>
+      <div class="embed-wrap">
+        <iframe 
+          title="個人消費分析_江梓瑀" 
+          src="https://app.powerbi.com/view?r=eyJrIjoiNDE0YjUyNmQtOWFhYS00M2FmLWE3ODYtMzE0OTg3ZGQyYjVmIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9" 
+          allowFullScreen="true">
+        </iframe>
+      </div>
     </section>
 
     <section>
@@ -155,17 +174,16 @@
       </ul>
     </section>
 
+    <!-- 模擬展示：使用同一個 Power BI 來源 -->
     <section>
       <h3>模擬展示</h3>
-      <!-- 原本的 iframe 改為你提供的同一份報表來源（#2） -->
-      <iframe
-        title="個人消費分析_江梓瑀"
-        class="bi-embed"
-        src="https://app.powerbi.com/view?r=eyJrIjoiNDE0YjUyNmQtOWFhYS00M2FmLWE3ODYtMzE0OTg3ZGQyYjVmIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9"
-        loading="lazy"
-        allowfullscreen="true"
-        id="dashboard">
-      </iframe>
+      <div class="embed-wrap" id="dashboard">
+        <iframe 
+          title="個人消費分析_江梓瑀" 
+          src="https://app.powerbi.com/view?r=eyJrIjoiNDE0YjUyNmQtOWFhYS00M2FmLWE3ODYtMzE0OTg3ZGQyYjVmIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9" 
+          allowFullScreen="true">
+        </iframe>
+      </div>
     </section>
   </main>
 
@@ -174,15 +192,16 @@
   </footer>
 
   <script>
-    // 觀察 section/iframe，滑入畫面時加入 show class（進場動畫）
-    const revealTargets = document.querySelectorAll('section, .bi-embed');
+    // 進場動畫
+    const sections = document.querySelectorAll('section, .embed-wrap');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('show');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
       });
     }, { threshold: 0.2 });
-
-    revealTargets.forEach(el => observer.observe(el));
+    sections.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
