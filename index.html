@@ -12,6 +12,8 @@
       --text:#2c3e50;
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: "Segoe UI", "Noto Sans TC", sans-serif;
       background-color: #f9f9fb;
@@ -34,6 +36,19 @@
     }
 
     header h2 { margin: 0; font-size: 28px; }
+
+    /* 頁內小導覽 */
+    .top-nav {
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+      margin: 14px 0 0;
+    }
+    .top-nav a {
+      display:inline-block; padding:8px 14px; border-radius:999px;
+      background:#ffffff; color:#2c2c2c; text-decoration:none;
+      border:1px solid rgba(0,0,0,0.08);
+      transition: .2s ease;
+    }
+    .top-nav a:hover { transform: translateY(-1px); box-shadow:0 2px 8px rgba(0,0,0,0.12); }
 
     main {
       max-width: 960px;
@@ -69,7 +84,7 @@
     }
     li:hover { transform: scale(1.02); color: var(--c2); }
 
-    /* RWD 內嵌容器（Power BI / 影片 共用） */
+    /* RWD 內嵌容器（Power BI / 影片 / PPT 共用） */
     .embed-wrap {
       position: relative;
       width: 100%;
@@ -93,12 +108,29 @@
       border: none;
     }
 
-    footer { text-align: center; padding: 30px; color: #888; font-size: 14px; }
+    footer {
+      text-align: center; padding: 30px; color: #888; font-size: 14px;
+    }
+
+    /* 回到頂部按鈕（可選） */
+    .back-to-top {
+      position: fixed; right: 16px; bottom: 16px;
+      padding: 10px 14px; border-radius: 999px; border: none;
+      background: var(--c2); color:#2c2c2c; cursor:pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+      display:none;
+    }
+    .back-to-top.show { display:block; }
   </style>
 </head>
 <body>
   <header>
     <h2>你花錢的樣子像誰？｜消費視覺化分析專案</h2>
+    <nav class="top-nav" aria-label="頁內導覽">
+      <a href="#ppt">專案簡報</a>
+      <a href="#bi">互動展示</a>
+      <a href="#analysis">分析面向</a>
+    </nav>
   </header>
 
   <main>
@@ -110,32 +142,36 @@
       </p>
     </section>
 
-    <!-- 專案影片（YouTube） -->
-    <section>
-      <h3>專案簡報PPT</h3>
+    <!-- 專案簡報（PPT / 若需改成 YouTube 亦可沿用此容器） -->
+    <section id="ppt">
+      <h3>專案簡報（PPT）</h3>
       <div class="embed-wrap">
-        <iframe src="https://913002-my.sharepoint.com/personal/chiang_913002_onmicrosoft_com/_layouts/15/Doc.aspx?sourcedoc={e2b17c04-1348-41d6-8ddd-89714eaf3a89}&amp;action=embedview&amp;wdAr=1.7777777777777777"
-        width="1000"
-        height="563"
-        frameborder="0"
-        style="border:none; max-width:100%;">
+        <iframe
+          src="https://913002-my.sharepoint.com/personal/chiang_913002_onmicrosoft_com/_layouts/15/Doc.aspx?sourcedoc={e2b17c04-1348-41d6-8ddd-89714eaf3a89}&amp;action=embedview&amp;wdAr=1.7777777777777777"
+          title="專案簡報（PPT 內嵌）"
+          allowfullscreen>
         </iframe>
       </div>
+      <p style="margin-top:12px;color:#777;font-size:14px;">
+        若無法載入，請確認檔案已設為「任何人擁有連結可檢視」，或改用
+        <a href="https://913002-my.sharepoint.com/personal/chiang_913002_onmicrosoft_com/_layouts/15/Doc.aspx?sourcedoc={e2b17c04-1348-41d6-8ddd-89714eaf3a89}&amp;action=embedview&amp;wdAr=1.7777777777777777" target="_blank" rel="noopener">直接連結</a>
+        檢視。
+      </p>
     </section>
 
     <!-- 互動展示（Power BI） -->
-    <section>
+    <section id="bi">
       <h3>互動展示（Power BI）</h3>
       <div class="embed-wrap">
         <iframe 
           title="個人消費分析_江梓瑀" 
           src="https://app.powerbi.com/view?r=eyJrIjoiNDE0YjUyNmQtOWFhYS00M2FmLWE3ODYtMzE0OTg3ZGQyYjVmIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9" 
-          allowFullScreen="true">
+          allowfullscreen="true">
         </iframe>
       </div>
     </section>
 
-    <section>
+    <section id="analysis">
       <h3>分析面向</h3>
       <ol>
         <li><strong>消費行為分析</strong>
@@ -195,8 +231,10 @@
   </main>
 
   <footer>
-    &copy; 2025 智慧消費視覺化分析專案 ｜ Designed with ❤️ Crafted by Vicky
+    &copy; 2025 智慧消費視覺化分析專案 ｜ Designed with ❤️ by Vicky
   </footer>
+
+  <button class="back-to-top" aria-label="回到頂部">▲</button>
 
   <script>
     // Header 漸層視差與亮度變化
@@ -215,6 +253,14 @@
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
     }, { threshold: 0.2 });
     targets.forEach(el => observer.observe(el));
+
+    // 回到頂部按鈕
+    const backTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) backTop.classList.add('show');
+      else backTop.classList.remove('show');
+    });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>
