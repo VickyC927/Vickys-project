@@ -69,11 +69,11 @@
     }
     li:hover { transform: scale(1.02); color: var(--c2); }
 
-    /* RWD 內嵌容器（Power BI / PPT 共用） */
+    /* RWD 內嵌容器（Power BI / 影片 共用） */
     .embed-wrap {
       position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;       /* 預設 16:9；Power BI 我們用 1918/1005 也差不多 */
+      aspect-ratio: 16 / 9;
       border-radius: 10px;
       overflow: hidden;
       background-color: var(--c3);
@@ -110,26 +110,27 @@
       </p>
     </section>
 
-    <!-- 新增：PPT 嵌入區（放在簡介與互動展示之間） -->
+    <!-- 專案影片（YouTube） -->
     <section>
-      <h3>專案簡報（PPT）</h3>
-      <div class="embed-wrap" id="ppt-wrap">
-        <iframe id="pptFrame" title="專案簡報"></iframe>
+      <h3>專案簡報影片</h3>
+      <div class="embed-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/ClQJsJrR_JI"
+          title="專案簡報影片（YouTube）"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
       </div>
-      <p style="margin-top:12px;color:#777;font-size:14px;">
-        若無法載入，請確認檔案已設為「任何人擁有連結可檢視」，或<a href="#" id="pptDirectLink">改用直接連結開啟</a>。
-      </p>
     </section>
 
     <!-- 互動展示（Power BI） -->
     <section>
       <h3>互動展示（Power BI）</h3>
       <div class="embed-wrap">
-        <iframe src="https://913002-my.sharepoint.com/personal/chiang_913002_onmicrosoft_com/_layouts/15/Doc.aspx?sourcedoc={e2b17c04-1348-41d6-8ddd-89714eaf3a89}&amp;action=embedview&amp;wdAr=1.7777777777777777"
-        width="1000"
-        height="563"
-        frameborder="0"
-        style="border:none; max-width:100%;">
+        <iframe 
+          title="個人消費分析_江梓瑀" 
+          src="https://app.powerbi.com/view?r=eyJrIjoiNDE0YjUyNmQtOWFhYS00M2FmLWE3ODYtMzE0OTg3ZGQyYjVmIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9" 
+          allowFullScreen="true">
         </iframe>
       </div>
     </section>
@@ -194,7 +195,7 @@
   </main>
 
   <footer>
-    &copy; 2025 智慧消費視覺化分析專案 ｜ Designed with ❤️ Crafted by Vicky 
+    &copy; 2025 智慧消費視覺化分析專案 ｜ Designed with ❤️ Crafted by Vicky
   </footer>
 
   <script>
@@ -214,14 +215,6 @@
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
     }, { threshold: 0.2 });
     targets.forEach(el => observer.observe(el));
-
-    // 🧩 動態設定 PPT 來源（用 encodeURIComponent 自動編碼）
-    const rawPptUrl = "https://913002-my.sharepoint.com/:p:/r/personal/chiang_913002_onmicrosoft_com/Documents/%E5%B0%88%E9%A1%8C/%E5%80%8B%E4%BA%BA%E6%B6%88%E8%B2%BB%E5%88%86%E6%9E%90_%E6%B1%9F%E6%A2%93%E7%91%80.pptx?d=we2b17c04134841d68ddd89714eaf3a89&csf=1&web=1&e=PXUdhZ";
-    const pptEmbed = "https://view.officeapps.live.com/op/embed.aspx?src=" + encodeURIComponent(rawPptUrl);
-    const pptFrame = document.getElementById("pptFrame");
-    const pptDirectLink = document.getElementById("pptDirectLink");
-    if (pptFrame) pptFrame.src = pptEmbed;
-    if (pptDirectLink) pptDirectLink.href = rawPptUrl;
   </script>
 </body>
 </html>
