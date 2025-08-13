@@ -96,6 +96,8 @@
       font-weight: 700;
       line-height: 1;
     }
+    /* 子項目縮排 */
+    .arrow-list .sub-item{ margin-left: 1.5em; }
 
     /* 原本的 hover 動畫保留在 li，顏色呼應主題 */
     li {
@@ -207,7 +209,7 @@
         </li>
         <li><strong>個人 vs 群體比較</strong>
           <ul class="arrow-list">
-            <li>引入全台平均、五等分位作對照，並比較同齡，查看自身消費水平。</li>
+            <li>引入全台平均、學生、上班族等族群作對照</li>
             <li>計算消費佔比差異，建立比較雷達圖與象限圖</li>
           </ul>
         </li>
@@ -231,7 +233,7 @@
       <ul class="arrow-list">
         <li>個人電子發票資料（財政部）</li>
         <li>信用卡消費明細</li>
-        <li>政府公開資料（行政院主計處家庭收支調查）</li>
+        <li>政府公開資料（家庭收支調查、物價指數等）</li>
       </ul>
     </section>
 
@@ -247,12 +249,36 @@
     <section>
       <h3>使用工具</h3>
       <ul class="arrow-list">
-        <li>Excel / Google Sheets（初步彙整）</li>
         <li>Python（資料前處理、自動分類）</li>
-        <li>Power Query（資料整合與轉換）</li>
+        <li>SQL / Power Query（資料整合與轉換）</li>
         <li>Power BI（互動式視覺化）</li>
+        <li>Excel / Google Sheets（初步彙整）</li>
       </ul>
     </section>
+
+    <!-- 🔥 新增：還能擴充的方向 / App 雛形 -->
+    <section>
+      <h3>還能擴充的方向？</h3>
+      <ul class="arrow-list">
+        <li>本次雖以靜態報告為主，但未來仍可進一步開發：</li>
+        <li class="sub-item">異常消費偵測：出現過高／突增分類時即時提醒</li>
+        <li class="sub-item">預算超支預警：針對各類別設定門檻並發送通知</li>
+        <li class="sub-item">智能建議系統：根據消費模式給出節省或分配建議</li>
+      </ul>
+
+      <hr style="margin: 2em 0;">
+
+      <h3>有機會成為記帳 App 的雛形</h3>
+      <ul class="arrow-list">
+        <li>本專題的概念結合了「記帳＋分析＋人格洞察」</li>
+        <li>未來若轉為 App 化，能實現：</li>
+        <li class="sub-item">自動分類消費類型</li>
+        <li class="sub-item">即時追蹤預算與消費偏好</li>
+        <li class="sub-item">提供個人化的財務回饋與建議</li>
+        <li class="sub-item">讓記帳不再只是記錄，而是變成一種智慧互動</li>
+      </ul>
+    </section>
+
   </main>
 
   <footer>
