@@ -20,6 +20,7 @@
       color: var(--text);
       margin: 0;
       padding: 0;
+      line-height: 1.7;
     }
 
     header {
@@ -76,15 +77,33 @@
       color: #34495e;
     }
 
-    ul, ol { margin-left: 20px; }
-
-    li {
-      margin-bottom: 6px;
-      transition: transform 0.3s ease, color 0.3s ease;
+    /* 客製列點：﹂ */
+    .arrow-list{
+      list-style: none;
+      padding-left: 1.25em; /* 留給符號的空間 */
+      margin-left: 0;
     }
-    li:hover { transform: scale(1.02); color: var(--c2); }
+    .arrow-list li{
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .arrow-list li::before{
+      content: "﹂";
+      position: absolute;
+      left: -1.05em;
+      top: 0.05em;
+      color: var(--c2);
+      font-weight: 700;
+      line-height: 1;
+    }
 
-    /* RWD 內嵌容器（Power BI / 影片 / PPT 共用） */
+    /* 原本的 hover 動畫保留在 li，顏色呼應主題 */
+    li {
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+    li:hover { transform: translateX(2px); color: var(--c2); }
+
+    /* RWD 內嵌容器（Power BI / 影片 共用） */
     .embed-wrap {
       position: relative;
       width: 100%;
@@ -121,6 +140,10 @@
       display:none;
     }
     .back-to-top.show { display:block; }
+
+    @media (max-width: 480px){
+      header h2 { font-size: 22px; }
+    }
   </style>
 </head>
 <body>
@@ -142,16 +165,21 @@
       </p>
     </section>
 
-    <!-- 專案簡報（PPT / 若需改成 YouTube 亦可沿用此容器） -->
+    <!-- 專案簡報（YouTube 影片） -->
     <section id="ppt">
-      <h3>專案簡報（PPT）</h3>
+      <h3>專案簡報（影片）</h3>
       <div class="embed-wrap">
-        <iframe width="1918" height="1005" src="https://www.youtube.com/embed/61lHnDyuM0M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/61lHnDyuM0M"
+          title="專案簡報影片（YouTube）"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
       </div>
       <p style="margin-top:12px;color:#777;font-size:14px;">
-        若無法載入，請確認檔案已設為「任何人擁有連結可檢視」，或改用
-        <a href="https://913002-my.sharepoint.com/personal/chiang_913002_onmicrosoft_com/_layouts/15/Doc.aspx?sourcedoc={e2b17c04-1348-41d6-8ddd-89714eaf3a89}&amp;action=embedview&amp;wdAr=1.7777777777777777" target="_blank" rel="noopener">直接連結</a>
-        檢視。
+        若無法播放，<a href="https://youtu.be/61lHnDyuM0M" target="_blank" rel="noopener">改用 YouTube 連結開啟</a>。
       </p>
     </section>
 
@@ -160,8 +188,9 @@
       <h3>互動展示（Power BI）</h3>
       <div class="embed-wrap">
         <iframe 
-          title="個人消費分析_江梓瑀" 
-          src="https://app.powerbi.com/view?r=eyJrIjoiNDE0YjUyNmQtOWFhYS00M2FmLWE3ODYtMzE0OTg3ZGQyYjVmIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9" 
+          title="個人消費分析_江梓瑀（Power BI）" 
+          src="https://app.powerbi.com/view?r=eyJrIjoiNDE0YjUyNmQtOWFhYS00M2FmLWE3ODYtMzE0OTg3ZGQyYjVmIiwidCI6IjhlODY2MWQyLTY3OTAtNDI2NC05NDIxLTFiODM2NDVjMmVlZCJ9"
+          loading="lazy"
           allowfullscreen="true">
         </iframe>
       </div>
@@ -171,25 +200,25 @@
       <h3>分析面向</h3>
       <ol>
         <li><strong>消費行為分析</strong>
-          <ul>
+          <ul class="arrow-list">
             <li>自動分類消費項目（如食、衣、住、行、育樂、其他）</li>
             <li>分析消費金額、次數、時間分布、商家偏好</li>
           </ul>
         </li>
         <li><strong>個人 vs 群體比較</strong>
-          <ul>
-            <li>引入全台平均、學生、上班族等族群作對照</li>
+          <ul class="arrow-list">
+            <li>引入全台平均、五等分位作對照，並比較同齡，查看自身消費水平。</li>
             <li>計算消費佔比差異，建立比較雷達圖與象限圖</li>
           </ul>
         </li>
         <li><strong>年度與月份趨勢追蹤</strong>
-          <ul>
+          <ul class="arrow-list">
             <li>比較不同年份、月份的總花費與消費組成變化</li>
-            <li>加入四季、月份等時間維度，觀察消費高峰期</li>
+            <li>加入月份、星期等時間維度，觀察消費高峰期</li>
           </ul>
         </li>
         <li><strong>視覺化儀表板</strong>
-          <ul>
+          <ul class="arrow-list">
             <li>使用 Power BI 製作互動圖表</li>
             <li>包含趨勢圖、佔比圖、象限圖與 Tooltip 功能</li>
           </ul>
@@ -199,16 +228,16 @@
 
     <section>
       <h3>資料來源</h3>
-      <ul>
+      <ul class="arrow-list">
         <li>個人電子發票資料（財政部）</li>
         <li>信用卡消費明細</li>
-        <li>政府公開資料（家庭收支調查、物價指數等）</li>
+        <li>政府公開資料（行政院主計處家庭收支調查）</li>
       </ul>
     </section>
 
     <section>
       <h3>預期效益</h3>
-      <ul>
+      <ul class="arrow-list">
         <li>認識自身的消費習慣與偏好分類</li>
         <li>與群體比較，發現潛在的消費風格特徵</li>
         <li>提升財務自覺與資料閱讀能力</li>
@@ -217,11 +246,11 @@
 
     <section>
       <h3>使用工具</h3>
-      <ul>
-        <li>Python（資料前處理、自動分類）</li>
-        <li>SQL / Power Query（資料整合與轉換）</li>
-        <li>Power BI（互動式視覺化）</li>
+      <ul class="arrow-list">
         <li>Excel / Google Sheets（初步彙整）</li>
+        <li>Python（資料前處理、自動分類）</li>
+        <li>Power Query（資料整合與轉換）</li>
+        <li>Power BI（互動式視覺化）</li>
       </ul>
     </section>
   </main>
